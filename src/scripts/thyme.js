@@ -22,7 +22,10 @@ if (world && box && fallingLayer && fill && template) {
 
 	box.addEventListener('click', () => {
 		const target = box.getBoundingClientRect();
-		const endX = target.width * (0.42 + Math.random() * 0.16);
+		const inset = 8;
+		const sprigWidth = 40;
+		const landingWidth = Math.max(0, fill.clientWidth - sprigWidth - inset * 2);
+		const endX = fill.offsetLeft + inset + Math.random() * landingWidth;
 
 		if (reducedMotion.matches) {
 			collectSprig(makeSprig(), endX);

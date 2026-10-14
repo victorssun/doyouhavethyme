@@ -1,0 +1,25 @@
+---
+import '../styles/docs.css';
+
+const { frontmatter, backHref = '/docs/', backLabel = 'Docs' } = Astro.props;
+const title = Astro.props.title ?? frontmatter?.title ?? 'Docs';
+const description = Astro.props.description ?? frontmatter?.description ?? 'Notes and docs for DoYouHaveThyme?';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#f6f2e8" />
+		<meta name="description" content={description} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title} — DoYouHaveThyme?</title>
+	</head>
+	<body>
+		<main class="docs-page">
+			<nav aria-label="Site navigation"><a href={backHref}>← {backLabel}</a></nav>
+			<article class="docs-content"><slot /></article>
+		</main>
+	</body>
+</html>
