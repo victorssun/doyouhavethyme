@@ -1,0 +1,127 @@
+@font-face {
+	font-family: 'Press Start 2P';
+	src: url('/fonts/PressStart2P-Regular.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+
+:root {
+	font-family: 'Press Start 2P', monospace;
+	color: #304336;
+	background: #f6f2e8;
+}
+
+* { box-sizing: border-box; }
+
+body { min-width: 280px; margin: 0; }
+
+.site-shell {
+	width: min(100% - 32px, 900px);
+	min-height: 100svh;
+	margin: 0 auto;
+	padding-top: clamp(40px, 7vh, 72px);
+}
+
+h1 {
+	margin: 0;
+	font-size: clamp(1rem, 3.7vw, 2.25rem);
+	font-weight: 400;
+	letter-spacing: -0.045em;
+	line-height: 1.5;
+	text-align: center;
+}
+
+h1 span { color: #648e5c; }
+
+.world {
+	--box-bottom: 24px;
+	position: relative;
+	width: min(100%, 720px);
+	height: clamp(290px, 36vw, 330px);
+	margin: 32px auto 0;
+	overflow: hidden;
+}
+
+.box-shadow {
+	position: absolute;
+	bottom: calc(var(--box-bottom) - 7px);
+	left: 50%;
+	width: 190px;
+	height: 8px;
+	background: #dfd7c7;
+	box-shadow: 10px 4px 0 #dfd7c7, -10px 4px 0 #dfd7c7;
+	transform: translateX(-50%);
+}
+
+.box-button {
+	position: absolute;
+	z-index: 1;
+	bottom: var(--box-bottom);
+	left: 50%;
+	width: min(256px, 88%);
+	aspect-ratio: 4 / 3;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+	overflow: visible;
+	filter: drop-shadow(3px 3px 0 #8f795546);
+	transform: translateX(-50%);
+	transition: transform 120ms steps(2, end);
+	touch-action: manipulation;
+}
+
+.box-button:hover { transform: translate(-50%, -2px); }
+.box-button:active { transform: translate(-50%, 2px); }
+.box-button:focus-visible { outline: 3px solid #294336; outline-offset: 8px; }
+
+.box-back, .box-front {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	image-rendering: pixelated;
+}
+
+.box-back { z-index: 1; }
+.box-front { z-index: 3; }
+
+.falling-layer {
+	position: absolute;
+	z-index: 2;
+	inset: 0;
+	pointer-events: none;
+}
+
+.box-fill {
+	position: absolute;
+	z-index: 2;
+	top: 39%;
+	left: 24%;
+	width: 52%;
+	height: 31%;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.falling-sprig {
+	position: absolute;
+	width: 40px;
+	height: 60px;
+	pointer-events: none;
+	image-rendering: pixelated;
+}
+
+.in-box-sprig {
+	position: absolute;
+	top: 0;
+	width: 40px;
+	height: 60px;
+	image-rendering: pixelated;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.box-button { transition: none; }
+}
